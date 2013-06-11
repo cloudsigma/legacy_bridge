@@ -575,16 +575,17 @@ class CloudSigmaLegacy(object):
             drives = []
 
             for d in a_result['drives']:
+                device = d['device']
+
                 # Legacy API uses single number to represent channel and controller of 'block' ('virtio' in new API).
                 if d['device'] == 'virtio':
+                    device = 'block'
                     dev_channel = d['dev_channel']
                     dev_channel = ''.join(dev_channel.split(':'))
-                    dev_channel_int = int(dev_channel, 2)
+                    dev_channel_int = int(dev_channel)
                     dev_channel = unicode(dev_channel_int)
                 else:
                     dev_channel = d['dev_channel']
-
-                device = 'block' if d['device'] == 'virtio' else d['device']
 
                 drives.append("{0}:{1} {2}".format(device, dev_channel, d['drive']['uuid']))
 
