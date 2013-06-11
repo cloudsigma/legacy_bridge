@@ -1029,7 +1029,5 @@ if __name__ == '__main__':
         payload = ""
 
     c = CloudSigmaLegacy(verbose=options.verbose)
-    # try:
+
     print(c.perform(args, payload))
-    # except Exception as e:
-    #     print("Error {0}".format(str(e)))
