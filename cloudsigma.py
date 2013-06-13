@@ -164,7 +164,7 @@ class CloudSigmaLegacy(object):
         @type a_endpoint: unicode
         @param a_endpoint: Endpoint for the request.
 
-        @type a_data: unicode
+        @type a_data: object
         @param a_data: Request's a_data
 
         @type a_params: dict
