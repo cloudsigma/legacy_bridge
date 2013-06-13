@@ -177,27 +177,38 @@ class CloudSigmaLegacy(object):
         @rtype: requests.models.Response
         """
         a_type = a_type.lower()
+        url = urlparse.urljoin(self.url, a_endpoint)
+
+        if self.verbose:
+            print(">>> REQUEST")
+            print("\tURL:", url)
+
+            if a_headers:
+                print("\tHEADERS:", a_headers)
+
+            if a_data:
+                print("\tDATA:", str(a_data)[:2048])
 
         if a_type == 'get':
-            response = requests.get(urlparse.urljoin(self.url, a_endpoint),
+            response = requests.get(url,
                                     auth=(self.username, self.password),
                                     data=a_data,
                                     headers=a_headers,
                                     params=a_params)
         elif a_type == 'put':
-            response = requests.put(urlparse.urljoin(self.url, a_endpoint),
+            response = requests.put(url,
                                     auth=(self.username, self.password),
                                     data=a_data,
                                     headers=a_headers,
                                     params=a_params)
         elif a_type == 'post':
-            response = requests.post(urlparse.urljoin(self.url, a_endpoint),
+            response = requests.post(url,
                                      auth=(self.username, self.password),
                                      data=a_data,
                                      headers=a_headers,
                                      params=a_params)
         elif a_type == 'delete':
-            response = requests.delete(urlparse.urljoin(self.url, a_endpoint),
+            response = requests.delete(url,
                                        auth=(self.username, self.password),
                                        data=a_data,
                                        headers=a_headers,
@@ -206,15 +217,6 @@ class CloudSigmaLegacy(object):
             raise ValueError("{0} is not supported".format(a_type))
 
         if self.verbose:
-            print(">>> REQUEST")
-            print("\tURL:", response.url)
-
-            if a_headers:
-                print("\tHEADERS:", a_headers)
-
-            if a_data:
-                print("\tDATA:", a_data[:2048])
-
             print("<<< RESPONSE")
             print("\tSTATUS CODE:", response.status_code)
             print("\tHEADERS:", response.headers)
