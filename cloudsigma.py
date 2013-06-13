@@ -996,7 +996,7 @@ if __name__ == '__main__':
     import sys
     from optparse import OptionParser
 
-    parser = OptionParser(usage="usage: %prog [-c | -f FILENAME] ARGUMENTS",
+    parser = OptionParser(usage="usage: %prog [-c | -f FILENAME] [-v] ARGUMENTS",
                           version="%prog {version}".format(version=__version__))
 
     parser.add_option('-c',
