@@ -16,23 +16,23 @@ from os import environ as os_environ
 
 # You can override these values by running:
 # $ export CSAUTH='user@example.com:password'
-USERNAME = 'user@example.com'
-PASSWORD = 'password'
+DEFAULT_USERNAME = 'user@example.com'
+DEFAULT_PASSWORD = 'password'
 
 try:
-    DEFAULT_USERNAME, DEFAULT_PASSWORD = os_environ['CSAUTH'].split(':')
+    USERNAME, PASSWORD = os_environ['CSAUTH'].split(':')
 except:
-    DEFAULT_USERNAME, DEFAULT_PASSWORD = USERNAME, PASSWORD
+    USERNAME, PASSWORD = DEFAULT_USERNAME, DEFAULT_PASSWORD
 
 
 # You can override this value by running:
 # $ export CSURI='https://zrh.cloudsigma.com/api/2.0/'
-URL = 'https://zrh.cloudsigma.com/api/2.0/'
+DEFAULT_URL = 'https://zrh.cloudsigma.com/api/2.0/'
 
 try:
-    DEFAULT_URL = os_environ['CSURI']
+    URL = os_environ['CSURI']
 except:
-    DEFAULT_URL = URL
+    URL = DEFAULT_URL
 
 
 def key_in(a_dict, a_keypath):
@@ -86,7 +86,7 @@ class CloudSigmaLegacy(object):
     >>> c.drives_list()
     """
 
-    def __init__(self, username=DEFAULT_USERNAME, password=DEFAULT_PASSWORD, url=DEFAULT_URL, verbose=False):
+    def __init__(self, username=USERNAME, password=PASSWORD, url=URL, verbose=False):
         self.username = username
         self.password = password
         self.url = url
