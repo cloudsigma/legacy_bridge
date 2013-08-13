@@ -189,6 +189,9 @@ class CloudSigmaLegacy(object):
             if a_data:
                 print("\tDATA:", str(a_data)[:2048])
 
+            if a_params:
+                print("\tPARAMS:", str(a_params)[:2048])
+
         if a_type == 'get':
             response = requests.get(url,
                                     auth=(self.username, self.password),
