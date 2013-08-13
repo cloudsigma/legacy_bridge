@@ -369,7 +369,7 @@ class CloudSigmaLegacy(object):
         """
         @rtype: unicode
         """
-        r = self.make_request('GET', 'drives/')
+        r = self.make_request('GET', 'drives/', a_params={'limit': 0})
 
         if r.status_code == 200:
             result = r.json()
@@ -404,7 +404,7 @@ class CloudSigmaLegacy(object):
         """
         @rtype: unicode
         """
-        r = self.make_request('GET', 'drives/')
+        r = self.make_request('GET', 'drives/', a_params={'limit': 0})
 
         if r.status_code == 200:
             return self.drives_list_convert_result(r.json())
@@ -650,7 +650,7 @@ class CloudSigmaLegacy(object):
         """
         @rtype: unicode
         """
-        r = self.make_request('GET', 'servers/')
+        r = self.make_request('GET', 'servers/', a_params={'limit': 0})
 
         if r.status_code == 200:
             result = r.json()
@@ -684,7 +684,7 @@ class CloudSigmaLegacy(object):
             return ""
 
     def servers_list(self):
-        r = self.make_request('GET', 'servers/')
+        r = self.make_request('GET', 'servers/', a_params={'limit': 0})
 
         if r.status_code == 200:
             return self.servers_list_convert_result(r.json())
@@ -931,7 +931,7 @@ class CloudSigmaLegacy(object):
         """
         @rtype: unicode
         """
-        r = self.make_request('GET', 'vlans/')
+        r = self.make_request('GET', 'vlans/', a_params={'limit': 0})
 
         if r.status_code == 200:
             result = r.json()
