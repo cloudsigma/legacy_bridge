@@ -32,7 +32,7 @@ try:
 except:
     DEFAULT_URL = URL
 
-DEFAULT_URL_UPLOAD = list(urlparse.urlsplit(URL))
+DEFAULT_URL_UPLOAD = list(urlparse.urlsplit(DEFAULT_URL))
 DEFAULT_URL_UPLOAD[1] = 'direct.' + DEFAULT_URL_UPLOAD[1]
 DEFAULT_URL_UPLOAD = urlparse.urlunsplit(DEFAULT_URL_UPLOAD)
 
